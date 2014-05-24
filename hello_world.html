@@ -60,8 +60,7 @@ var svg = d3.select("body").append("svg")
 
 d3.tsv("data_redux", function(error, data) {
   data.forEach(function(d) {
-    d.date = parseDate(d.date);
-    d.close = +d.close;
+    d.geog_region = d.geog_region;
   });
 
   x.domain(d3.extent(data, function(d) { return d.date; }));

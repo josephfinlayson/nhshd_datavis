@@ -61,6 +61,7 @@ var svg = d3.select("body").append("svg")
 d3.tsv("data_redux", function(error, data) {
   data.forEach(function(d) {
     d.geog_region = d.geog_region;
+    d.97_98_number_children = +d.97_98_number_children;
   });
 
   x.domain(d3.extent(data, function(d) { return d.geog_region; }));

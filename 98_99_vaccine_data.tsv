@@ -1,0 +1,109 @@
+health_authority	Number_children	Diphtheria	Tetanus	Pertussis	Polio	Hib	MMR
+England	609,783	95 	95 	94 	95 	95 	88 
+  EASTERN 	65,335	96 	96 	95 	96 	96 	89
+Avon	11,892	97 	97 	96 	97 	97 	91
+Barking & Havering	4,876	95 	95 	95 	95 	95 	88
+Barnet	4,116	94 	94 	93 	94 	94 	85
+Barnsley	2,790	98 	98 	97 	98 	98 	94
+Bedfordshire	7,613	95 	95 	94 	95 	95 	90
+Berkshire	11,563	88 	88 	87 	88 	87 	82
+Bexley & Greenwich	5,813	95 	95 	94 	95 	95 	83
+Birmingham	14,682	96 	96 	96 	96 	96 	91
+Bradford	6,884	95 	95 	94 	95 	95 	88
+Brent & Harrow	6,304	94 	94 	94 	94 	93 	87
+Bromley	3,654	94 	94 	93 	94 	94 	85
+Buckinghamshire	8,591	97 	97 	96 	97 	97 	92
+Bury & Rochdale	5,310	97 	97 	96 	97 	97 	92
+Calderdale & Kirklees	7,728	97 	97 	95 	97 	97 	92
+Cambridgeshire	7,917	97 	97 	96 	97 	97 	91
+Camden & Islington	4,697	93 	93 	92 	93 	92 	81
+Cornwall & Isle Of Scilly	5,157	96 	96 	94 	96 	96 	88
+County Durham	7,405	97 	97 	95 	97 	96 	92
+Coventry	3,925	95 	95 	93 	95 	94 	90
+Croydon	4,834	84 	84 	83 	84 	84 	71
+Doncaster	3,610	96 	96 	94 	96 	95 	93
+Dorset	7,027	97 	97 	96 	97 	97 	90
+Dudley	3,601	96 	96 	94 	96 	96 	89
+Ealing, Hammersmith & Hounslow	9,135	91 	91 	90 	91 	90 	81
+East & North Hertfordshire	6,904	93 	93 	92 	93 	93 	85
+East Kent	6,817	97 	97 	96 	97 	97 	91
+East Lancashire	7,080	95 	95 	93 	95 	95 	90
+East London & The City	11,928	87 	87 	86 	87 	86 	79
+East Riding	6,697	96 	96 	94 	96 	96 	92
+East Surrey	5,249	93 	93 	92 	93 	93 	83
+East Sussex	8,039	96 	96 	94 	96 	95 	86
+Enfield & Haringey	7,478	92 	92 	91 	92 	91 	84
+Gateshead & South Tyneside	4,113	96 	96 	94 	96 	95 	90
+Gloucestershire	6,495	95 	96 	94 	95 	95 	90
+Herefordshire	1,811	95 	96 	93 	96 	95 	87
+Hillingdon	3,437	96 	96 	94 	96 	96 	87
+Isle Of Wight	1,353	97 	97 	96 	97 	97 	89
+Kensington, Chelsea & Westminster	3,113	94 	94 	94 	93 	94 	84
+Kingston & Richmond	3,983	93 	93 	93 	93 	93 	81
+Lambeth, Southwark & Lewisham	11,420	92 	92 	91 	92 	92 	77
+Leeds	8,460	92 	92 	91 	92 	91 	82
+Leicestershire	11,404	98 	98 	97 	98 	97 	94
+Lincolnshire   	6,896	92 	92 	91 	92 	91 	75
+Liverpool	5,733	95 	95 	93 	95 	93 	87
+LONDON	96,976	92 	92 	91 	92 	92 	82
+Manchester	5,827	91 	91 	89 	91 	90 	83
+Merton, Sutton & Wandsworth	5,565	92 	92 	91 	92 	92 	78
+Morceambe Bay	3,363	96 	96 	95 	96 	96 	88
+Newcastle & North Tyneside	5,284	95 	95 	94 	95 	95 	90
+Norfolk	9,018	98 	98 	97 	98 	98 	92
+North & East Devon	5,066	97 	97 	95 	97 	97 	91
+North & Mid Hampshire	6,983	96 	96 	95 	96 	96 	90
+North Cheshire	4,038	97 	97 	95 	97 	96 	90
+North Cumbria	3,692	97 	97 	95 	97 	97 	93
+North Derbyshire	4,219	98 	98 	97 	98 	98 	95
+North Essex	10,767	95 	95 	94 	95 	95 	88
+North Nottinghamshire	4,850	97 	97 	96 	97 	96 	91
+North Staffordshire	5,231	97 	97 	95 	97 	95 	92
+NORTH WEST	82,049	95 	95 	94 	95 	95 	89
+North West Lancashire	5,376	96 	96 	95 	96 	96 	88
+North Yorkshire	8,606	95 	95 	95 	95 	95 	88
+Northamptonshire	8,043	97 	97 	95 	97 	96 	92
+NORTHERN & YORKSHIRE	76,121	96 	96 	94 	96 	95 	90
+Northumberland	3,371	98 	98 	97 	98 	98 	94
+Nottingham	7,486	96 	96 	96 	96 	96 	90
+Oxfordshire	6,994	98 	98 	97 	98 	98 	93
+Portsmouth & South East Hampshire 	6,653	96 	96 	95 	96 	96 	90
+Redbridge & Waltham Forest	6,623	96 	96 	96 	96 	96 	91
+Rotherham	3,336	94 	94 	93 	94 	93 	87
+Salford & Trafford	5,468	96 	96 	94 	96 	96 	90
+Sandwell	3,999	96 	96 	95 	96 	96 	90
+Sefton	3,170	95 	95 	94 	95 	94 	85
+Sheffield	6,055	96 	96 	95 	96 	96 	91
+Shropshire	5,223	98 	98 	96 	98 	97 	92
+Solihull	2,427	94 	94 	93 	94 	94 	87
+Somerset	5,520	97 	97 	96 	97 	97 	91
+South & West Devon	6,397	96 	96 	95 	95 	95 	90
+South Cheshire	7,775	95 	95 	93 	95 	94 	89
+South Derbyshire	6,938	91 	91 	90 	91 	91 	87
+SOUTH EAST	105,453	96 	96 	95 	96 	95 	89 
+South Essex	9,135	96 	96 	94 	96 	95 	89
+South Humber	3,815	97 	97 	95 	97 	97 	92
+South Lancashire	3,596	96 	96 	94 	96 	96 	89
+South Staffordshire	7,039	97 	97 	96 	97 	97 	92
+SOUTH WEST	55,392	97 	97 	95 	97 	96 	90
+Southampton & South West Hampshire	6,143	97 	97 	96 	97 	97 	91
+St Helens & Knowsley	4,353	93 	93 	91 	93 	93 	83
+Stockport	3,438	97 	97 	96 	97 	96 	91
+Suffolk	7,313	97 	97 	95 	97 	96 	91
+Sunderland	2,889	97 	97 	95 	97 	97 	92
+Tees	7,030	96 	96 	95 	96 	96 	90
+TRENT	61,399	95 	95 	95 	95 	95 	90
+Wakefield	3,962	95 	95 	94 	94 	94 	87
+Walsall	3,442	95 	95 	94 	95 	94 	89
+Warwickshire	5,822	97 	97 	96 	97 	96 	89
+West Hertfordshire	6,668	96 	97 	95 	97 	96 	89
+West Kent	12,860	97 	97 	97 	97 	97 	91
+WEST MIDLANDS	67,058	96 	97 	95 	96 	96 	91
+West Pennine	6,296	96 	96 	94 	96 	95 	90
+West Surrey	7,505	94 	94 	93 	94 	94 	87
+West Sussex	8,660	98 	98 	96 	98 	97 	89
+Wigan & Bolton	7,368	98 	98 	96 	98 	97 	92
+Wiltshire	7,838	98 	98 	97 	98 	98 	91
+Wirral	3,858	97 	97 	95 	97 	96 	90
+Wolverhampton	3,249	97 	97 	96 	97 	97 	92
+Worcestershire	6,607	97 	98 	97 	98 	97 	92

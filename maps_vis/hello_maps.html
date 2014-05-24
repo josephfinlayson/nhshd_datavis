@@ -14,10 +14,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+    window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')
+    </script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
 
-    <script type="text/javascript" charset="utf-8" src="d3.v2.js"></script>
-    <script type="text/javascript" src="js/raphael.js"></script>
+    <script type="text/javascript" src="js/vendor/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="js/d3.js"></script>
+    <script type="text/javascript" src="js/raphael-min.js"></script>
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
@@ -37,16 +43,20 @@
         var paper = new Raphael(document.getElementById('map'), 1200, 400);    
         var worldProjection = d3.geo.mercator()          .scale(600)          .translate([330, 280]);     
         var border_color = "#444";    
-        var unsel_color = "#e0e0e0";     
-        $.getJSON('world.json', function(data) {      
+        var unsel_color = "#e0e0e0";   
+        var polygons = {};  
+        $.getJSON('maps.json', function(data) {      
             svg_borders = {};      
             $.each(data["features"], function(idx, feature) {      
                 country = feature.properties.name;      
                 svg_borders[country] = [];      
-                if (feature.geometry.type == "MultiPolygon") {        
+                if (feature.geometry.type == "MultiPolygon") { 
+                	console.log(feature.geometry);
+                	console.log("feature.geometry");       
+                	       
                     polygons = feature.geometry.coordinates;        
                 } else { // Single polygon
-                              
+                     
                     polygons[0] = feature.geometry.coordinates;        
                 }        
                 $.each(polygons, function(idxpolygon, polygon) {          
@@ -67,9 +77,9 @@
                             'fill': unsel_color
                         });             
                         line.country = country;             
-                        $(line.node).click(get_click_handler(country));             
-                        $(line.node).mousemove(get_over_handler(country));             
-                        $(line.node).mouseout(get_out_handler(country));             
+                        // $(line.node).click(get_click_handler(country));             
+                        // $(line.node).mousemove(get_over_handler(country));             
+                        // $(line.node).mouseout(get_out_handler(country));             
                         svg_borders[country].push(line);           
                     });         
                 });      
@@ -77,16 +87,6 @@
         });
         </script>
     </div>
-
-
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script>
-    window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')
-    </script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
     (function(b, o, i, l, e, r) {

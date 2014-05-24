@@ -100,6 +100,46 @@ textarea {
 
 
 
+    .container {
+      width: 1000px;
+    }
+
+    #map {
+      border: 1px solid #000;
+      background-color: rgba(62, 169, 245, 0.02);
+    }
+
+    #map h1 {
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    #map text {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 64px;
+      pointer-events: none;
+    }
+
+    #map path {
+      fill: #eee;
+      stroke: #aaa;
+      pointer-events: none;
+    }
+
+    .title * {
+      margin-top: 12px;
+    }
+
+    #area {
+      width: 1000px;
+    }
+
+    #info {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      width: 300px;
+    }
 
 
 
@@ -302,3 +342,4 @@ textarea {
         page-break-after: avoid;
     }
 }
+

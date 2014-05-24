@@ -63,8 +63,8 @@ d3.tsv("data_redux", function(error, data) {
     d.geog_region = d.geog_region;
   });
 
-  x.domain(d3.extent(data, function(d) { return d.date; }));
-  y.domain(d3.extent(data, function(d) { return d.close; }));
+  x.domain(d3.extent(data, function(d) { return d.geog_region; }));
+  y.domain(d3.extent(data, function(d) { return d.97_98_number_children; }));
 
   svg.append("g")
       .attr("class", "x axis")

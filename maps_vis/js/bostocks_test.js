@@ -29,14 +29,17 @@ jQuery(document).ready(function($) {
             .attr("class", function(d) {
                 return "subunit " + d.id;
             }).text(function(d) {
-                console.log(d);
+                // console.log(d);
             }).attr('data-county', function(d) {
-                console.log(d.properties.NAME_2)
+                // console.log(d.properties.NAME_2)
                 return d.properties.NAME_2
 
             })
             .attr("d", path)
-            .style('fill', function() {
+            .style('fill', function(d) {
+                if (d.properties.NAME_1 === "England") {
+                    console.log(d.properties.NAME_2)
+                }
                 return d3.rgb(rand(), rand(), rand())
             })
             .on("mouseover", function(d) {

@@ -21,11 +21,23 @@ jQuery(document).ready(function($) {
         return Math.floor(Math.random() * 100);
     }
     d3.json("maps_topo.json", function(error, uk) {
+        var filtered = [];
+        to_filter = svg.selectAll(".subunit").data(topojson.feature(uk, uk.objects.maps).features);
         this.uk = uk;
         svg.selectAll(".subunit")
-            .data(topojson.feature(uk, uk.objects.maps).features)
-            .enter()
-            .append("path")
+
+        to_filter
+        // filter(function(index) {
+        //     console.log(index)
+        // })
+        // // .data(topojson.feature(uk, uk.objects.maps).features)
+        .enter().append('path')
+            .filter(function(d) {
+                console.log(d);
+                if (d.properties.NAME_1 === "England") {
+                    return true;
+                }
+            })
             .attr("class", function(d) {
                 return "subunit " + d.id;
             }).text(function(d) {
@@ -37,8 +49,13 @@ jQuery(document).ready(function($) {
             })
             .attr("d", path)
             .style('fill', function(d) {
-                if (d.properties.NAME_1 === "England") {
-                    console.log(d.properties.NAME_2)
+                if (d.properties.NAME_1 !== "England") {
+                    return d3.rgb(255, 255, 255);
+                }
+                return d3.rgb(rand(), rand(), rand())
+            }).style('path', function(d) {
+                if (d.properties.NAME_1 !== "England") {
+                    return d3.rgb(255, 255, 255);
                 }
                 return d3.rgb(rand(), rand(), rand())
             })

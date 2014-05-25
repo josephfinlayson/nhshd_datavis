@@ -9,6 +9,26 @@ jQuery(document).ready(function($) {
         .scale(6000)
         .translate([width / 2, height / 2])
 
+    var data_redux = d3.tsv("data_redux", function(error, d) {
+        console.log(d);
+        return {
+            d.00_01_mmr: "94",
+            d.00_01_number_children: "4917",
+            d.d.97_98_mmr: "92",
+            d.97_98_number_children: "4746",
+            d.98_99_mmr: "95",
+            d.98_99_number_children: "4876",
+            d.99_00_mmr: "94",
+            d.99_00_number_children: "4899",
+            d.geog_region: "Barking_Havering",
+            d.mapped_to_map: "Barking and Dagenham",
+        }
+        //     data.forEach(function(d) {
+        //         d.geog_region = d.geog_region;
+        //         d[97_98_number_children] += d[97_98_number_children];
+        //     });
+    });
+
     var path =
         d3.geo.path()
         .projection(projection);
@@ -37,6 +57,10 @@ jQuery(document).ready(function($) {
                 if (d.properties.NAME_1 === "England") {
                     return true;
                 }
+            }).attr('data-deaths', function(d) {
+                // console.log(d.properties.NAME_2)
+                console.log(data_redux);
+
             })
             .attr("class", function(d) {
                 return "subunit " + d.id;

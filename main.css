@@ -1,0 +1,8 @@
+h1 {
+    text-align: center;
+}
+
+div.map, div.graph {
+    display: inline-block;
+    width: 50%;
+}

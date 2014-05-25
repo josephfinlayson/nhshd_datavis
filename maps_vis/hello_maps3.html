@@ -1,102 +1,105 @@
 <!DOCTYPE html>
 <!-- saved from url=(0047)http://www.over9k.co.uk/experiments/march-2013/ -->
-<html lang="en" slick-uniqueid="3"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Over9k - Experiments - D3.js Map of UK</title>
-  
-  <meta name="Author" content="Chris Finch">
+<html lang="en" slick-uniqueid="3">
 
-  <!-- Styles -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>maps,UK</title>
 
-  <link rel="stylesheet" href="http://www.over9k.co.uk/css/normalize.css">
-  <link rel="stylesheet" href="http://www.over9k.co.uk/css/bootstrap.min.css">
+    <meta name="Author" content="Joseph Finlayson">
 
-  <!-- Scripts -->
+    <!-- Styles -->
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Scripts -->
 
 
-  <script src="./Over9k - Experiments - D3.js Map of UK_files/jquery-1.8.2.min.js"></script><style type="text/css"></style>
-  
-  <script src="./Over9k - Experiments - D3.js Map of UK_files/d3.v3.min.js"></script>
-  <script src="./Over9k - Experiments - D3.js Map of UK_files/raphael-min.js"></script>
-  // 
-  // <script src="js/bostocks_test.js"></script>
+    <script src="./Over9k - Experiments - D3.js Map of UK_files/jquery-1.8.2.min.js"></script>
+    <style type="text/css"></style>
 
-  <!-- // <script src="js/raphael_test.js"></script> -->
-    
-  <!-- // <script src="./Over9k - Experiments - D3.js Map of UK_files/simplify-new.js"></script> -->
-  <!-- // <script src="./Over9k - Experiments - D3.js Map of UK_files/script-new.js"></script> -->
+    <script src="./Over9k - Experiments - D3.js Map of UK_files/d3.v3.min.js"></script>
+    <script src="./Over9k - Experiments - D3.js Map of UK_files/raphael-min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
 
-  <!--[if lt IE 9]>
+    <script src="js/bostocks_test.js"></script>
+
+    <!-- // <script src="js/raphael_test.js"></script> -->
+
+    <!-- // <script src="./Over9k - Experiments - D3.js Map of UK_files/simplify-new.js"></script> -->
+    <!-- // <script src="./Over9k - Experiments - D3.js Map of UK_files/script-new.js"></script> -->
+
+    <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <link href="assets/style_ie.css" rel="stylesheet" type="text/css" />
   <![endif]-->
 
-  <style>
+    <style>
+    * {
+        box-sizing: border-box
+    }
     .container {
-      width: 1000px;
     }
-
     #map {
-      width: 999px;
-      height: 999px;
-      border: 1px solid #000;
-      background-color: rgba(62, 169, 245, 0.02);
+        border: 1px solid #000;
+        background-color: rgba(62, 169, 245, 0.02);
+        dis
     }
-
-    #map h1 {
-      text-align: center;
-      margin-top: 24px;
-    }
-
-    #map text {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 64px;
-      pointer-events: none;
-    }
-
-    #map path {
-      fill: #eee;
-      stroke: #aaa;
-      pointer-events: none;
-    }
-
-    .title * {
-      margin-top: 12px;
-    }
-
-    #area {
-      width: 1000px;
-    }
-
     #info {
-      position: fixed;
-      top: 12px;
-      left: 12px;
-      width: 300px;
+        border: 1px solid #000;
+        background-color: rgba(62, 169, 245, 0.02);
     }
-  </style>
+    #map h1 {
+        text-align: center;
+        margin-top: 24px;
+    }
+    #map text {
+        font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 64px;
+        pointer-events: none;
+    }
+    #map path {
+        fill: #eee;
+        stroke: #aaa;
+    }
+    .title * {
+        margin-top: 12px;
+    }
+    #area {
+        width: 1000px;
+    }
+    </style>
 
-<style id="clearly_highlighting_css" type="text/css">/* selection */ html.clearly_highlighting_enabled ::-moz-selection { background: rgba(246, 238, 150, 0.99); } html.clearly_highlighting_enabled ::selection { background: rgba(246, 238, 150, 0.99); } /* cursor */ html.clearly_highlighting_enabled {    /* cursor and hot-spot position -- requires a default cursor, after the URL one */    cursor: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--cursor.png") 14 16, text; } /* highlight tag */ em.clearly_highlight_element {    font-style: inherit !important; font-weight: inherit !important;    background-image: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--yellow.png");    background-repeat: repeat-x; background-position: top left; background-size: 100% 100%; } /* the delete-buttons are positioned relative to this */ em.clearly_highlight_element.clearly_highlight_first { position: relative; } /* delete buttons */ em.clearly_highlight_element a.clearly_highlight_delete_element {    display: none; cursor: pointer;    padding: 0; margin: 0; line-height: 0;    position: absolute; width: 34px; height: 34px; left: -17px; top: -17px;    background-image: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--delete-sprite.png"); background-repeat: no-repeat; background-position: 0px 0px; } em.clearly_highlight_element a.clearly_highlight_delete_element:hover { background-position: -34px 0px; } /* retina */ @media (min--moz-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {    em.clearly_highlight_element { background-image: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--yellow@2x.png"); }    em.clearly_highlight_element a.clearly_highlight_delete_element { background-image: url("chrome-extension://pioclpoplcdbaefihamjohnefbikjilc/clearly/images/highlight--delete-sprite@2x.png"); background-size: 68px 34px; } } </style><style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none; }[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }[touch-action="scroll"],[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }</style></head>
+</head>
 
 <body class="home">
 
-  <div class="container">
-    <div class="title">
-      <h1>Red/Green heat map</h1>
+    <div class="container">
+        <div class="title">
+            <h1>Red/Green heat map</h1>
+        </div>
+        <div class="controls">
+
+            <div class="control-group">
+                <label for="area">YEAR:</label>
+                <input type="range" id="area" name="area" min="1992" max="2013" value="1" step="1">
+            </div>
+
+        </div>
+        <div class="row">
+            <div id="map" class="col-md-8">
+            </div>
+
+            <div id="info" class="col-md-4">
+                <h2>Info for county
+                    <span id="county"></span>
+                </h2>
+            </div>
+        </div>
+      
     </div>
-    <div class="controls">
-
-<!--       <div class="control-group">
-        <label for="area">Line simplification minimum area:</label>
-        <input type="range" id="area" name="area" min="1" max="1000" value="1" step="1">
-      </div>
- -->
-    </div>
-
-    <div id="map">
-     </div>
-
-  </div>
 
 
 
-</body></html>
+</body>
+
+</html>

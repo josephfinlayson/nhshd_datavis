@@ -4,7 +4,7 @@ counties = ['ENGLAND', 'Avon', 'Barking_Havering', 'Barnet', 'Barnsley', 'Bedfor
 #	print each
 geog_region = []
 geog_lookup = {}
-with open('/Users/flashton/Desktop/county_lookup') as fo:
+with open('county_lookup') as fo:
 	for each in fo:
 		each = each.strip()
 		split_line = each.split('\t')
@@ -16,7 +16,7 @@ with open('/Users/flashton/Desktop/county_lookup') as fo:
 per_year = {}
 results = {}
 
-with open('/Users/flashton/repos/nhshd_datavis/measles_data.csv') as fo:
+with open('measles_data.csv') as fo:
 	for each in fo:
 		each = each.strip()
 		split_line = each.split(',', 5)
@@ -48,7 +48,7 @@ for each in per_year:
 #print len(set(geog_region))
 
 for each in results['EastLondon_TheCity']:
-	print each, results['EastLondon_TheCity§'][each]
+	print each, results['EastLondon_TheCity'][each]
 
 year_list = ['1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014']
 '''

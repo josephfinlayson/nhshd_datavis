@@ -7,3 +7,5 @@ One of the big problems we had was in the structure of the data. The geographica
 Another of the big problems was the D3 is hard.
 
 The current state of the project is that area.incidence and area.coverage have some useful data in.
+
+There is vaccine coverage data here http://www.hpa.org.uk/webw/HPAweb&HPAwebStandard/HPAweb_C/1195733783627

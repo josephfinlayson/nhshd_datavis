@@ -16,14 +16,14 @@ jQuery(document).ready(function($) {
         return {
             mapped_to_map: d.mapped_to_map, //   "Barking and Dagenham"
             time: d.time, //"Barking_Havering"
-            y1998_mmr: d.y1998_mmr, //   "92"
-            y1998_num: d.y1998_num, //   "4746"
-            y1999_mmr: d.y1999_mmr, //   "95"
-            y1999_num: d.y1999_num, //   "4876"
-            y2000_mmr: d.y1998_mmr, //   "94"
-            y2000_num: d.y2000_num, //   "4899"
-            y2001_mmr: d.y2001_mmr, //   "94"
-            y2001_num: d.y2001_num //  "4917"
+            y1998_mmr: Number(d.y1998_mmr), //   "92"
+            y1998_num: Number(d.y1998_num), //   "4746"
+            y1999_mmr: Number(d.y1999_mmr), //   "95"
+            y1999_num: Number(d.y1999_num), //   "4876"
+            y2000_mmr: Number(d.y1998_mmr), //   "94"
+            y2000_num: Number(d.y2000_num), //   "4899"
+            y2001_mmr: Number(d.y2001_mmr), //   "94"
+            y2001_num: Number(d.y2001_num) //  "4917"
         };
     }, function(err, rows) {
         console.log(rows);
@@ -31,14 +31,8 @@ jQuery(document).ready(function($) {
         d3.json("maps_topo.json", function(error, uk) {
             var filtered = [];
             to_filter = svg.selectAll(".subunit").data(topojson.feature(uk, uk.objects.maps).features);
-            this.uk = uk;
             svg.selectAll(".subunit")
-
             to_filter
-            // filter(function(index) {
-            //     console.log(index)
-            // })
-            // // .data(topojson.feature(uk, uk.objects.maps).features)
             .enter().append('path')
                 .filter(function(d) {
                     // console.log(d);
@@ -64,15 +58,21 @@ jQuery(document).ready(function($) {
                 })
                 .attr("d", path)
                 .style('fill', function(d) {
-                    if (d.properties.NAME_1 !== "England") {
-                        return d3.rgb(255, 255, 255);
-                    }
+                    average_death_array = [];
+                    rows.forEach(function(row) {
+                        // console.log(row);
+                        average_death_array.push(row.y1998_mmr);
+                        // ...
+                    })
+                    // console.log(average_death_array);
+                    var reduced = average_death_array.reduce(
+                        function(previousValue, currentValue, index, array) {
+                            return previousValue + currentValue;
+                        });
+                    console.log(reduced);
                     return d3.rgb(rand(), rand(), rand())
                 }).style('path', function(d) {
-                    if (d.properties.NAME_1 !== "England") {
-                        return d3.rgb(255, 255, 255);
-                    }
-                    return d3.rgb(rand(), rand(), rand())
+                    return d3.rgb(111, 111, 111);
                 })
                 .on("mouseover", function(d) {
                     console.log(d.properties.NAME_2);

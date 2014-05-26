@@ -23,6 +23,44 @@ body {
   stroke-width: 1.5px;
 }
 
+#chart {
+  margin-left: -40px;
+  height: 506px;
+}
+
+text {
+  font: 10px sans-serif;
+}
+
+.dot {
+  stroke: #000;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.label {
+  fill: #777;
+}
+
+.year.label {
+  font: 500 196px "Helvetica Neue";
+  fill: #ddd;
+}
+
+.year.label.active {
+  fill: #aaa;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+  cursor: ew-resize;
+}
+
 </style>
 <body>
 <p id="chart"></p>
@@ -112,7 +150,7 @@ function color(d) { return d3.rgb('red'); }
 function key(d) { return d.name; }
 
 // Chart dimensions.
-var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5},
+var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 70},
     width = 960 - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -150,7 +188,7 @@ svg.append("text")
     .attr("text-anchor", "end")
     .attr("x", width)
     .attr("y", height - 6)
-    .text("income per capita, inflation-adjusted (dollars)");
+    .text("Number of indiduals reported to have Measles");
 
 // Add a y-axis label.
 svg.append("text")
@@ -159,7 +197,7 @@ svg.append("text")
     .attr("y", 6)
     .attr("dy", ".75em")
     .attr("transform", "rotate(-90)")
-    .text("life expectancy (years)");
+    .text("Avergae MMR coverage (%)");
 
 // Add the year label; the value is set on transition.
 var label = svg.append("text")
@@ -171,6 +209,10 @@ var label = svg.append("text")
 
 // Load the data.
 d3.tsv("../data_redux", function(error, data) {
+
+	var year_start = 1998,
+		year_end = 2014;
+
 	data.forEach(function(d) {
 		if (main_data[d.geog] !== undefined) {
 			var keys = Object.keys(d);
@@ -215,15 +257,23 @@ d3.tsv("../data_redux", function(error, data) {
 		inner_data.instances = [];
 		
 		var years = Object.keys(main_data[region]);
+		//var min_years = Number(d3.min(years));
+		//var max_years = Number(d3.max(years));
 		
-		years.sort();
-		
-		for (var t = 0; t < years.length; t++) {
-			inner_data.vacs.push([Number(years[t]), main_data[region][years[t]].mmr]);
+		for (var t = year_start; t <= year_end; t++) {
+			if(main_data[region][t] !== undefined &&  main_data[region][t].mmr !== undefined) {
+				inner_data.vacs.push([t, main_data[region][t].mmr]);
+			} else {
+				inner_data.vacs.push([t, 0]);
+			}
 		}
 		
-		for (var t = 0; t < years.length; t++) {
-			inner_data.instances.push([Number(years[t]), main_data[region][years[t]].infection]);
+		for (var t = year_start; t <= year_end; t++) {
+			if(main_data[region][t] !== undefined && main_data[region][t].infection !== undefined) {
+				inner_data.instances.push([t, main_data[region][t].infection]);
+			} else {
+				inner_data.instances.push([t, 0]);
+			}
 		}
 		
 		main_data2.push(inner_data);
@@ -238,10 +288,10 @@ d3.tsv("../data_redux", function(error, data) {
 	var dot = svg.append("g")
 	  .attr("class", "dots")
 	.selectAll(".dot")
-	  .data(interpolateData(1998))
+	  .data(interpolateData(1998))   //Starting from 1998.
 	.enter().append("circle")
 	  .attr("class", "dot")
-	  .style("fill", function(d) { return colorScale(color(d)); })
+	  .style("fill", function(d) { return colorScale(d.region); })
 	  .call(position)
 	  .sort(order);
 
@@ -267,12 +317,18 @@ d3.tsv("../data_redux", function(error, data) {
 	  .tween("year", tweenYear)
 	  .each("end", enableInteraction);
 
+	function position(dot) {
+	dot .attr("cx", function(d) { return xScale(d.instance); })
+		.attr("cy", function(d) { return yScale(d.vac); })
+		.attr("r", function(d) { return 5; });
+	}
 	// Positions the dots based on data.
+	/* ORIGINAL FUNCTION
 	function position(dot) {
 	dot .attr("cx", function(d) { return xScale(x(d)); })
 		.attr("cy", function(d) { return yScale(y(d)); })
-		.attr("r", function(d) { return 20; });
-	}
+		.attr("r", function(d) { return 10; });
+	}*/
 
 	// Defines a sort order so that the smallest dots are drawn on top.
 	function order(a, b) {
@@ -314,7 +370,9 @@ d3.tsv("../data_redux", function(error, data) {
 	var year = d3.interpolateNumber(1998, 2001);
 	return function(t) { displayYear(year(t)); };
 	}
-
+	
+	// MY OWN ADDITION FOR TESTING 1 YEAR:
+	//displayYear(1998);
 	// Updates the display to show the specified year.
 	function displayYear(year) {
 	dot.data(interpolateData(year), key).call(position).sort(order);

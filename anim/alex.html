@@ -155,7 +155,7 @@ var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 70},
     height = 500 - margin.top - margin.bottom;
 
 // Various scales. These domains make assumptions of data, naturally.
-var xScale = d3.scale.linear().domain([0, 50]).range([0, width]),
+var xScale = d3.scale.linear().domain([0, 350]).range([0, width]),
     yScale = d3.scale.linear().domain([0, 100]).range([height, 0]),
     radiusScale = d3.scale.sqrt().domain([0, 5e8]).range([0, 40]),
     colorScale = d3.scale.category10();
@@ -338,7 +338,7 @@ d3.tsv("../data_redux", function(error, data) {
 	// After the transition finishes, you can mouseover to change the year.
 	function enableInteraction() {
 	var yearScale = d3.scale.linear()
-		.domain([1998, 2001])
+		.domain([1998, 2013])
 		.range([box.x + 10, box.x + box.width - 10])
 		.clamp(true);
 
@@ -367,7 +367,7 @@ d3.tsv("../data_redux", function(error, data) {
 	// Tweens the entire chart by first tweening the year, and then the data.
 	// For the interpolated data, the dots and label are redrawn.
 	function tweenYear() {
-	var year = d3.interpolateNumber(1998, 2001);
+	var year = d3.interpolateNumber(1998, 2013);
 	return function(t) { displayYear(year(t)); };
 	}
 	
